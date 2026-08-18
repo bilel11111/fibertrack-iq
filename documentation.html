@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FiberTrack IQ - Documentation & User Manual</title>
+  <!-- Google Fonts Cairo & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Premium Reset and Variables */
+    :root {
+      --primary-en: #4f46e5;
+      --primary-en-hover: #4338ca;
+      --primary-ar: #059669;
+      --primary-ar-hover: #047857;
+      --bg-slate: #f8fafc;
+      --border-color: #e2e8f0;
+      --text-en: #1e293b;
+      --text-ar: #0f172a;
+      --muted-text: #64748b;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-slate);
+      color: var(--text-en);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    /* Print instruction banner */
+    .print-banner {
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      color: #ffffff;
+      padding: 20px 30px;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .print-button {
+      background: #ffffff;
+      color: #4f46e5;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.2s;
+    }
+    .print-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    
+    /* Header section */
+    .main-header {
+      padding: 60px 40px;
+      background: radial-gradient(circle at 100% 0%, rgba(79, 70, 229, 0.03) 0%, transparent 40%),
+                  radial-gradient(circle at 0% 100%, rgba(5, 150, 105, 0.03) 0%, transparent 40%);
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+    }
+    
+    .header-logo {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--primary-en), var(--primary-ar));
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(79,70,229,0.2);
+    }
+    .header-logo svg {
+      fill: none;
+      stroke: white;
+      stroke-width: 2.5;
+    }
+
+    .main-header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    
+    .main-header .title-ar {
+      font-family: 'Cairo', sans-serif;
+      font-size: 28px;
+      margin-top: 15px;
+      color: #1f2937;
+      font-weight: 800;
+    }
+    
+    .main-header p {
+      font-size: 14px;
+      color: var(--muted-text);
+      margin-top: 20px;
+      font-weight: 500;
+    }
+    
+    /* Section container */
+    .doc-section {
+      padding: 50px 40px;
+      border-bottom: 1px solid var(--border-color);
+      page-break-inside: avoid;
+    }
+    .doc-section:last-child {
+      border-bottom: none;
+    }
+    
+    /* Side by side layout */
+    .bilingual-grid {
+      display: grid;
+      grid-template-cols: 1fr 1fr;
+      gap: 50px;
+    }
+    
+    /* Columns styling */
+    .column-en {
+      font-size: 14px;
+      color: var(--text-en);
+    }
+    .column-ar {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      text-align: right;
+      font-size: 13.5px;
+      color: var(--text-ar);
+    }
+    
+    /* Section Headings */
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary-en);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .column-ar .section-title {
+      color: var(--primary-ar);
+      font-weight: 800;
+      font-size: 18px;
+    }
+    
+    /* Styled Lists */
+    ul {
+      list-style: none;
+      margin-top: 15px;
+    }
+    li {
+      margin-bottom: 12px;
+      padding-left: 20px;
+      position: relative;
+    }
+    li::before {
+      content: "•";
+      color: var(--primary-en);
+      font-weight: bold;
+      font-size: 18px;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+    
+    .column-ar li {
+      padding-left: 0;
+      padding-right: 20px;
+    }
+    .column-ar li::before {
+      left: auto;
+      right: 0;
+      color: var(--primary-ar);
+    }
+    
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 12.5px;
+    }
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f8fafc;
+      color: #0f172a;
+      font-weight: 700;
+    }
+    
+    .column-ar th, .column-ar td {
+      text-align: right;
+    }
+    .column-ar th {
+      background-color: #f0fdf4;
+    }
+    
+    /* Directory Visual Tree */
+    .directory-tree {
+      background-color: #0f172a;
+      color: #cbd5e1;
+      padding: 20px;
+      border-radius: 12px;
+      font-family: monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      overflow-x: auto;
+      margin-top: 20px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Steps Cards */
+    .step-card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--primary-en);
+    }
+    .column-ar .step-card {
+      border-left: none;
+      border-right: 4px solid var(--primary-ar);
+      background: #f0fdf4;
+    }
+    
+    .step-num {
+      font-weight: 800;
+      color: var(--primary-en);
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    
+    .column-ar .step-num {
+      color: var(--primary-ar);
+    }
+
+    .step-title {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    
+    /* Icons styling */
+    .title-icon {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* Footer Concluding note box */
+    .conclusion-box {
+      background: linear-gradient(to right, rgba(79,70,229,0.02), rgba(5,150,105,0.02));
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 40px;
+      page-break-inside: avoid;
+    }
+    
+    /* Responsive Media Queries */
+    @media (max-width: 768px) {
+      .bilingual-grid {
+        grid-template-cols: 1fr;
+        gap: 40px;
+      }
+      body {
+        padding: 10px;
+      }
+    }
+    
+    /* PRINT STYLING - Optimize strictly for PDF export */
+    @media print {
+      body {
+        background-color: #ffffff;
+        color: #000000;
+        padding: 0;
+      }
+      .container {
+        border: none;
+        box-shadow: none;
+      }
+      .print-banner {
+        display: none; /* Hide print buttons */
+      }
+      .doc-section {
+        padding: 30px 20px;
+        page-break-inside: avoid;
+      }
+      .bilingual-grid {
+        gap: 30px;
+      }
+      .directory-tree {
+        background-color: #f8fafc;
+        color: #1e293b;
+        border: 1px solid #cbd5e1;
+      }
+      .step-card {
+        background: #fafafa !important;
+        border: 1px solid #e2e8f0;
+      }
+      .conclusion-box {
+        margin: 20px;
+        background: #fafafa !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Print Instruction Banner -->
+    <div class="print-banner">
+      <span>💡 To download this organized guide as a beautiful PDF: Open it in a browser, press Ctrl+P (or Cmd+P), and select "Save as PDF".</span>
+      <button class="print-button" onclick="window.print()">🖨️ Export PDF / تصدير PDF</button>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+      <div class="header-logo">
+        <svg class="title-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h1>FiberTrack IQ</h1>
+      <div class="title-ar">نظام فايبير تراك آي كيو</div>
+      <p>Bilingual Professional Operations Guide & Technical Manual / دليل التشغيل ثنائي اللغة ودليل الدعم الفني</p>
+    </header>
+
+    <!-- SECTION 1: Concept & Overview -->
+    <section class="doc-section">
+      <div class="bilingual-grid">
+        
+        <!-- English Column -->
+        <div class="column-en">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            1. Project Overview & Concept
+          </div>
+          <p><strong>FiberTrack IQ</strong> is a modern, ultra-lightweight web application designed to help you supervise, manage, and monitor operations smoothly. Think of it as a <strong>digital command center</strong> that sits directly on your computer.</p>
+          <p style="margin-top:10px;">What makes <strong>FiberTrack IQ</strong> unique and powerful is its <strong>database-free local approach</strong>. In traditional applications, the software must constantly talk to a massive, expensive external computer in the cloud (called a "database server") to save and read information. If that external computer goes down or gets hacked, your app stops working.</p>
+          
+          <ul style="margin-top:15px;">
+            <li><strong>Ultra-Fast:</strong> Runs entirely inside your web browser using your computer's built-in memory capabilities, meaning there are no internet data lag delays.</li>
+            <li><strong>100% Portable:</strong> Copy the entire folder to a USB flash drive, plug it into any computer, and it runs instantly.</li>
+            <li><strong>Highly Secure:</strong> No external databases connected to the internet means no hacker can access or leak your customer information online.</li>
+          </ul>
+        </div>
+        
+        <!-- Arabic Column -->
+        <div class="column-ar">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            1. نظرة عامة وفكرة المشروع
+          </div>
+          <p>نظام <strong>فايبير تراك آي كيو (FiberTrack IQ)</strong> هو تطبيق ويب حديث وخفيف الوزن للغاية، تم تصميمه لمساعدتكم في توجيه وإدارة ومراقبة العمليات والشبكات بكل سلاسة. يمكنكم تصوره كـ <strong>مركز تحكم رقمي</strong> يعمل مباشرة على جهاز الكمبيوتر الخاص بكم.</p>
+          <p style="margin-top:10px;">ما يجعل نظام <strong>فايبير تراك آي كيو</strong> فريداً وقوياً هو اعتماده على <strong>منهجية التشغيل المحلي الخالي من قواعد البيانات الخارجية</strong>. في التطبيقات التقليدية، يجب على البرنامج الاتصال باستمرار بجهاز كمبيوتر خارجي ضخم ومكلف في السحابة الإلكترونية (يسمى "خادم قاعدة البيانات"). وإذا تعطل هذا الخادم الخارجي أو تعرض للاختراق، يتوقف تطبيقكم عن العمل تماماً.</p>
+          
+          <ul style="margin-top:15px;">
+            <li><strong>سريع للغاية:</strong> يعمل بالكامل داخل متصفح الإنترنت بالاعتماد على القدرات التخزينية المدمجة بجهازكم، مما يلغي أي انتظار لجلب البيانات عبر الإنترنت.</li>
+            <li><strong>متنقل بنسبة 100%:</strong> يمكنكم نسخ مجلد التطبيق بالكامل على ذاكرة فلاش (USB)، وتوصيلها بأي كمبيوتر آخر وتشغيله فوراً.</li>
+            <li><strong>آمن للغاية:</strong> لعدم وجود قاعدة بيانات خارجية متصلة بالإنترنت، فلا توجد ثغرات تتيح للمخترقين استغلالها أو تسريب بيانات عملائكم الحساسة.</li>
+          </ul>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- SECTION 2: Tech Stack -->
+    <section class="doc-section">
+      <div class="bilingual-grid">
+        
+        <!-- English Column -->
+        <div class="column-en">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            2. Technology Stack
+          </div>
+          <p>We built this application using a set of modern design tools. Below is an easy-to-understand explanation of what each tool does using simple everyday analogies:</p>
+          
+          <table>
+            <thead>
+              <tr>
+                <th>Technology</th>
+                <th>Concept & Analogy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>React.js</strong></td>
+                <td>Like <strong>Lego blocks</strong>. It allows us to build distinct parts of the screen (like buttons, lists, or forms) once and reuse them anywhere.</td>
+              </tr>
+              <tr>
+                <td><strong>Node.js</strong></td>
+                <td>Like a <strong>desktop simulator</strong>. It creates a secure local environment on your computer that lets the application run offline.</td>
+              </tr>
+              <tr>
+                <td><strong>Tailwind CSS</strong></td>
+                <td>Like the <strong>paint, wallpaper, and interior design</strong> of a house. It defines the colors, glowing borders, and dark mode.</td>
+              </tr>
+              <tr>
+                <td><strong>Lucide Icons</strong></td>
+                <td>Like <strong>universal road signs</strong>. They are clean, beautiful vector icons (maps, bells, and gears) that guide your eyes across the screens.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Arabic Column -->
+        <div class="column-ar">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            2. المكونات التقنية للمشروع
+          </div>
+          <p>لقد قمنا ببناء هذا التطبيق باستخدام مجموعة من الأدوات البرمجية الحديثة. نوضح لكم وظيفة كل أداة باستخدام تشبيهات مبسطة من الحياة اليومية لتسهيل فهمها:</p>
+          
+          <table>
+            <thead>
+              <tr>
+                <th>التقنية المستخدمة</th>
+                <th>المفهوم والتشبيه اليومي</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>React.js</strong></td>
+                <td>تشبه <strong>مكعبات الليغو (Lego)</strong>. تتيح لنا تصميم أجزاء الشاشة (مثل الأزرار، القوائم) مرة واحدة وإعادة استخدامها في أي مكان آخر بسهولة.</td>
+              </tr>
+              <tr>
+                <td><strong>Node.js</strong></td>
+                <td>تشبه <strong>جهاز المحاكاة المنزلي</strong>. توفر بيئة عمل محلية آمنة على جهاز الكمبيوتر الخاص بكم لتشغيل التطبيق دون اتصال بالإنترنت.</td>
+              </tr>
+              <tr>
+                <td><strong>Tailwind CSS</strong></td>
+                <td>تشبه <strong>الطلاء والتصميم الداخلي</strong> للمنزل. تحدد الألوان، والحدود المتوهجة، والوضع الليلي، وتنسيق الفراغات.</td>
+              </tr>
+              <tr>
+                <td><strong>Lucide Icons</strong></td>
+                <td>تشبه <strong>لافتات المرور العالمية</strong>. أيقونات بصرية ورموز واضحة وجميلة (مثل الخرائط، الأجراس، التروس) ترشد العين أثناء التنقل.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- SECTION 3: Installation & Running Guide -->
+    <section class="doc-section">
+      <div class="bilingual-grid">
+        
+        <!-- English Column -->
+        <div class="column-en">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            3. Running Guide (Beginners)
+          </div>
+          <p style="margin-bottom: 20px;">Follow these four simple steps to set up and start the application on any standard computer:</p>
+          
+          <div class="step-card">
+            <div class="step-num">Step 1</div>
+            <div class="step-title">Download & Install Node.js</div>
+            <p>Go to <strong>nodejs.org</strong>, download the <strong>LTS version</strong>, and install it. This acts as the simulator engine letting the application run locally.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-num">Step 2</div>
+            <div class="step-title">Open Terminal & Enter Folder</div>
+            <p>Open <strong>Command Prompt</strong> (Windows) or <strong>Terminal</strong> (Mac). Type <code>cd </code> followed by the path to the folder, then press Enter. E.g.:<br><code>cd C:\Users\TOPIC\Desktop\ftth</code></p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-num">Step 3</div>
+            <div class="step-title">Run Installation Command</div>
+            <p>Type <code>npm install</code> and press Enter. This automatically downloads the required design blueprints and templates inside the folder.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-num">Step 4</div>
+            <div class="step-title">Ignite the Application</div>
+            <p>Type <code>npm run dev</code> and press Enter. Once launched, copy the link displayed (usually <strong>http://localhost:8080</strong>) and paste it into your browser!</p>
+          </div>
+        </div>
+        
+        <!-- Arabic Column -->
+        <div class="column-ar">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            3. دليل التشغيل للمبتدئين
+          </div>
+          <p style="margin-bottom: 20px;">يرجى اتباع الخطوات الأربع البسيطة التالية لإعداد وتشغيل التطبيق على أي جهاز كمبيوتر:</p>
+          
+          <div class="step-card">
+            <div class="step-num">الخطوة 1</div>
+            <div class="step-title">تحميل وتثبيت برنامج Node.js</div>
+            <p>افتحوا موقع <strong>nodejs.org</strong>، وحملوا نسخة <strong>LTS المستقرة</strong> وثبتوها. يمثل هذا المحاكي الأساسي الذي يفهم كيفية تشغيل الأكواد محلياً.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-num">الخطوة 2</div>
+            <div class="step-title">فتح موجه الأوامر والدخول للمجلد</div>
+            <p>افتحوا <strong>Command Prompt</strong> في ويندوز أو <strong>Terminal</strong> في ماك. اكتبوا الأمر <code>cd </code> متبوعاً بمسار مجلد التطبيق واضغطوا Enter. مثال:<br><code>cd C:\Users\TOPIC\Desktop\ftth</code></p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-num">الخطوة 3</div>
+            <div class="step-title">تثبيت ملفات الشكل والتصميم</div>
+            <p>اكتبوا الأمر <code>npm install</code> واضغطوا Enter. سيقوم المساعد الذكي تلقائياً بتحميل وتثبيت المكونات الجمالية اللازمة للتطبيق.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-num">الخطوة 4</div>
+            <div class="step-title">إشعال وتشغيل لوحة التحكم</div>
+            <p>اكتبوا الأمر <code>npm run dev</code> واضغطوا Enter. بمجرد التشغيل، انسخوا الرابط المعروض (غالباً ما يكون <strong>http://localhost:8080</strong>) وافتحوه بالمتصفح!</p>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- SECTION 4: Folder Structure -->
+    <section class="doc-section">
+      <div class="bilingual-grid">
+        
+        <!-- English Column -->
+        <div class="column-en">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            4. Project Folder Structure
+          </div>
+          <p>Here is a simplified blueprint of the folders and files inside your project directory:</p>
+          
+          <div class="directory-tree">
+ftth/ (Main Project Folder)
+├── public/          <-- Static files & logos
+├── src/             <-- Core Application Source
+│   ├── components/  <-- Reusable UI elements (AI Assistant, etc.)
+│   ├── hooks/       <-- Custom state memory (language preference)
+│   ├── integrations/<-- Cloud bridging helpers
+│   ├── lib/         <-- Standard local tools
+│   ├── routes/      <-- Application routing & screens
+│   │   ├── _app.tsx <-- Main Frame Layout
+│   │   └── _app/    <-- Main Pages
+│   │       ├── index.tsx  <-- Dashboard
+│   │       ├── clients.tsx <-- Client Connection Hub
+│   │       └── map.tsx    <-- GPS Directions Navigator
+│   └── styles.css   <-- Main stylesheet (Dark mode, gradients)
+└── package.json     <-- Blueprint configuration & tool listings
+          </div>
+        </div>
+        
+        <!-- Arabic Column -->
+        <div class="column-ar">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            4. هيكلة ملفات ومجلدات المشروع
+          </div>
+          <p>إليكم رسماً بيانياً مبسطاً يوضح هيكلية ومحتويات مجلد التطبيق، ومهمة كل ملف:</p>
+          
+          <div class="directory-tree" style="direction: ltr; text-align: left;">
+ftth/ (المجلد الرئيسي للتطبيق)
+├── public/          <-- مستودع الأصول الثابتة كالشعارات
+├── src/             <-- المطبخ البرمجي الأساسي للأكواد
+│   ├── components/  <-- قطع البزل الصغيرة (المساعد الذكي)
+│   ├── hooks/       <-- الذاكرة الذكية لحفظ التفضيلات واللغة
+│   ├── integrations/<-- وصلات الربط السحابية المساعدة
+│   ├── lib/         <-- أدوات تشغيل وقراءة قاعدة البيانات المحلية
+│   ├── routes/      <-- نظام الملاحة والشاشات الرئيسية
+│   │   ├── _app.tsx <-- الإطار العام للتطبيق ولوحة الجانب
+│   │   └── _app/    <-- الصفحات والشاشات الفعلية
+│   │       ├── index.tsx  <-- شاشة لوحة القيادة
+│   │       ├── clients.tsx <-- شاشة إدارة طلبات العملاء
+│   │       └── map.tsx    <-- شاشة التوجيه الملاحي GPS
+│   └── styles.css   <-- الألوان والحدود والتحول للوضع الليلي
+└── package.json     <-- وثيقة المخطط العام التي تسجل أدوات التطبيق
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- SECTION 5: Code Pages Breakdown -->
+    <section class="doc-section">
+      <div class="bilingual-grid">
+        
+        <!-- English Column -->
+        <div class="column-en">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            5. Implementation Breakdown
+          </div>
+          <p>Behind the scenes, the individual code sheets are highly specialized:</p>
+          
+          <ul style="margin-top: 15px;">
+            <li><strong>main.jsx (The Entrance):</strong> Acts as the building’s entrance door. It hooks the application code to your web browser and ensures it displays properly.</li>
+            <li><strong>App.jsx / _app.tsx (The Controller):</strong> Like the building’s <strong>receptionist</strong>. It checks your role (Admin, Technician, Operator), guarantees you only see authorized routes, and handles the persistent layout, like the language switcher.</li>
+            <li><strong>The `components` folder (Small Puzzle Pieces):</strong> Instead of writing code for buttons or sidebars 100 times, we design them once here as reusable pieces. An example is the AI Anomaly Detector.</li>
+            <li><strong>The `pages` or `_app` folder (Rooms):</strong> Represents the full functional rooms. Clicking "Clients" triggers the receptionist to load the connections manager screen.</li>
+          </ul>
+        </div>
+        
+        <!-- Arabic Column -->
+        <div class="column-ar">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            5. تفصيل صفحات ومكونات الكود
+          </div>
+          <p>خلف الكواليس، تتمتع كل صفحة كود بتخصص تقني دقيق يؤدي وظيفة فريدة:</p>
+          
+          <ul style="margin-top: 15px;">
+            <li><strong>الملف main.jsx (البوابة):</strong> بمثابة بوابة الدخول الرئيسية. يقوم بطلب ربط وتشغيل الكود البرمجي بمتصفح الإنترنت فوراً.</li>
+            <li><strong>الملف App.jsx / _app.tsx (الموجه):</strong> يمثل <strong>موظف استقبال المبنى</strong>. يختبر دوركم الفني لتوجيهكم للغرف المصرح برؤيتها، ويعرض الهيكل الثابت كلوحة الجانب والتحكم باللغات.</li>
+            <li><strong>مجلد المكونات components (قطع البزل):</strong> بدلاً من تكرار كود زر أو صندوق بحث 100 مرة، نصممه مرة واحدة هنا كأداة جاهزة للتركيب، مثل نافذة المساعد الذكي.</li>
+            <li><strong>مجلد الشاشات pages أو _app (الغرف):</strong> الغرف الوظيفية داخل المبنى. الضغط على "العملاء" يجعل موظف الاستقبال يستدعي شاشة إدارة الخطوط والتوصيل.</li>
+          </ul>
+        </div>
+        
+      </div>
+    </section>
+    <!-- SECTION 6: Strategic Benefits, Challenges & Objectives -->
+    <section class="doc-section">
+      <div class="bilingual-grid">
+        
+        <!-- English Column -->
+        <div class="column-en">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            6. Strategic Benefits, Challenges & Objectives
+          </div>
+          <p><strong>FiberTrack IQ</strong> delivers high-fidelity operations management and addresses daily telecom engineering challenges to achieve clear, strategic business objectives:</p>
+          
+          <div style="margin-top: 15px; font-weight: 700; color: #4f46e5; font-size: 14px;">🚀 Primary Benefits</div>
+          <ul style="margin-top: 8px;">
+            <li><strong>Direct Field Operations Management:</strong> Live technician performance tracker and chantiers dispatcher.</li>
+            <li><strong>Advanced Optical Intelligence (GPON/OTDR):</strong> Instantly trace and locate fiber ruptures through real-time SVG reflectometry charts instead of expensive dedicated equipment.</li>
+            <li><strong>Bilingual AI Network Anomaly Detection:</strong> Real-time AI signals analysis and multilingual diagnostic agent (French and Arabic).</li>
+          </ul>
+          
+          <div style="margin-top: 15px; font-weight: 700; color: #4f46e5; font-size: 14px;">🛠️ Operational Challenges Solved</div>
+          <ul style="margin-top: 8px;">
+            <li><em>Challenge:</em> High equipment deployment and optical signal failure delays.<br><strong>Solution:</strong> Immediate visual mapping of ONT Rx signal power levels and OLT ports distribution.</li>
+            <li><em>Challenge:</em> Coordination overhead between project managers and field technicians.<br><strong>Solution:</strong> Integrated live technician workloads and GPS routing navigator directly inside the app.</li>
+            <li><em>Challenge:</em> Hardware shortages and stock management discrepancies.<br><strong>Solution:</strong> Automated real-time local database warnings for low stock materials.</li>
+          </ul>
+          
+          <div style="margin-top: 15px; font-weight: 700; color: #4f46e5; font-size: 14px;">🎯 Business Objectives & Strategic Exploitation</div>
+          <ul style="margin-top: 8px;">
+            <li><strong>Maximize Technician Efficiency:</strong> Use the leaderboard to optimize dispatching workloads and reward top field technicians.</li>
+            <li><strong>Reduce Network Downtime:</strong> Leverage the interactive impact analyzer (Virtual Topology Break) to identify affected apartments in seconds during trunk cuts.</li>
+            <li><strong>Facilitate Instant Client Deliveries:</strong> Since the app is completely self-contained and database-free, it can be deployed on a client's secure offline machine or local intranet with zero configuration overhead, providing immediate business value.</li>
+          </ul>
+        </div>
+        
+        <!-- Arabic Column -->
+        <div class="column-ar">
+          <div class="section-title">
+            <svg class="title-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            6. الفوائد، التحديات والأهداف الاستراتيجية
+          </div>
+          <p>يقدم نظام <strong>فايبير تراك آي كيو (FiberTrack IQ)</strong> حزمة متكاملة لإدارة العمليات الميدانية وتخطي التحديات اليومية لهندسة الاتصالات لتحقيق أهداف استراتيجية واضحة وملموسة:</p>
+          
+          <div style="margin-top: 15px; font-weight: 700; color: #059669; font-size: 14px;">🚀 الفوائد والمزايا الرئيسية</div>
+          <ul style="margin-top: 8px;">
+            <li><strong>إدارة فورية للعمليات الميدانية:</strong> لوحة أداء تفاعلية للفنيين وتكليف تلقائي ذكي لورشات العمل والتركيب.</li>
+            <li><strong>هندسة اتصالات بصرية متقدمة (GPON/OTDR):</strong> محاكاة تفاعلية فورية ورسم فني لمسارات وهن الألياف باستخدام لوحات SVG بدلاً من الأجهزة المكلفة.</li>
+            <li><strong>مساعد ذكي ثنائي اللغة لكشف الأعطال:</strong> تحليل ذكي وفوري لمؤشرات الإشارة وصيانة المشتركين القائمين باللغتين العربية والفرنسية.</li>
+          </ul>
+          
+          <div style="margin-top: 15px; font-weight: 700; color: #059669; font-size: 14px;">🛠️ التحديات التشغيلية التي يعالجها التطبيق</div>
+          <ul style="margin-top: 8px;">
+            <li><em>التحدي:</em> تأخر تتبع الأعطال ووهن الإشارة البصرية في الشبكة.<br><strong>الحل:</strong> إسقاط فوري لمستويات إرسال واستقبال مودم المشترك (ONT Rx) وتوزع منافذ الـ OLT.</li>
+            <li><em>التحدي:</em> صعوبة التنسيق بين رؤساء المشاريع والفرق الميدانية.<br><strong>الحل:</strong> نظام التوجيه الملاحي GPS وتقدير المسافات والمسارات المتحركة للفنيين بالميدان.</li>
+            <li><em>التحدي:</em> نقص جرد المعدات في المستودعات وتأخر طلبات الشراء.<br><strong>الحل:</strong> تنبيهات جرد وتنبؤ تلقائي فوري بنقص المواد الأساسية اعتماداً على قاعدة البيانات.</li>
+          </ul>
+          
+          <div style="margin-top: 15px; font-weight: 700; color: #059669; font-size: 14px;">🎯 الأهداف الاستراتيجية وكيفية الاستغلال الأمثل للتطبيق</div>
+          <ul style="margin-top: 8px;">
+            <li><strong>رفع كفاءة الأطقم الفنية:</strong> استخدام لوحة متصدرين حية لتحسين توزيع أعباء العمل ومكافأة الفنيين المنجزين للمهام.</li>
+            <li><strong>تقليص فترات انقطاع الخدمة:</strong> استغلال محاكي قطع الشبكة الافتراضي (Topology Break) لتحديد المشتركين المتأثرين في ثوانٍ أثناء انقطاع كابل التوزيع الرئيسي.</li>
+            <li><strong>تسليم فوري وسلس للعملاء:</strong> نظراً لكون التطبيق مستقلاً وخالياً من قواعد البيانات الخارجية، يمكن تنصيبه وتوريده لشبكة العميل الداخلية المغلقة (Intranet) بنقرة واحدة ودون الحاجة لضبط معقد أو اشتراكات شهرية مكلفة.</li>
+          </ul>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- SECTION 7: Conclusion Conclusion Note Box -->
+    <div class="conclusion-box">
+      <div class="bilingual-grid">
+        
+        <!-- English Column -->
+        <div class="column-en">
+          <div class="section-title" style="color: #1e293b;">
+            <svg class="title-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            7. Conclusion & Maintenance
+          </div>
+          <p>By keeping the database interactions entirely local and modular within a database-free local engine, <strong>FiberTrack IQ</strong> offers a set of unique benefits:</p>
+          <ul style="margin-top:10px;">
+            <li><strong>Zero Server Cost:</strong> No cloud database subscriptions to pay or manage.</li>
+            <li><strong>Hack-Proof Isolation:</strong> Complete database containment on the host device isolates it from internet hackers.</li>
+            <li><strong>Maintenance-Free:</strong> Built to operate smoothly, without indices to rebuild or servers to restart.</li>
+          </ul>
+        </div>
+        
+        <!-- Arabic Column -->
+        <div class="column-ar">
+          <div class="section-title" style="color: #0f172a;">
+            <svg class="title-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            7. خاتمة وإرشادات الصيانة المبسطة
+          </div>
+          <p>من خلال إبقاء قاعدة البيانات محلية ومدمجة بالكامل ضمن محرك تشغيل ذاتي خفيف الوزن، يقدم نظام <strong>فايبير تراك آي كيو (FiberTrack IQ)</strong> مزايا أمان فائقة:</p>
+          <ul style="margin-top:10px;">
+            <li><strong>تكاليف معدومة:</strong> لا توجد أي اشتراكات سحابية مدفوعة لخوادم قواعد البيانات لإدارتها.</li>
+            <li><strong>حصانة كاملة:</strong> الحفظ الكامل للبيانات محلياً على الجهاز المستضيف يعزلها تماماً عن مقرصني الويب.</li>
+            <li><strong>صيانة معدومة:</strong> مصمم للعمل بسلاسة واستقرار تام، بلا خوادم معقدة تحتاج لإعادة تشغيل أو جرد دوري.</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
