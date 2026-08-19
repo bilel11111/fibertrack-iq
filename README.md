@@ -1,6 +1,6 @@
-# FiberTrack IQ
+# FiberTrack IQ — FTTH Network Operations Platform
 
-FiberTrack IQ is a professional FTTH operations and supervision workspace for telecom teams. It centralizes network monitoring, subscriber activations, field operations, equipment, materials, alerts, topology analysis, maps, and technical assistance in a bilingual interface.
+FiberTrack IQ is a professional FTTH network operations and supervision platform for telecom teams. It centralizes network monitoring, subscriber activations, field operations, equipment, materials, alerts, topology analysis, maps, and technical assistance in a bilingual interface.
 
 > This repository contains the commercial source distribution of FiberTrack IQ. It is intended for authorized customers and licensed deployments; it is not a free public edition.
 
