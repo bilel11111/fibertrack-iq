@@ -1,5 +1,8 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "fibertrack-iq",
+  "version": "1.0.0",
+  "description": "Commercial FTTH operations and supervision workspace.",
+  "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "sideEffects": false,
   "type": "module",
